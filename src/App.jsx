@@ -1,4 +1,5 @@
 import { useState } from "react";
+// import Country from "./components/Country";
 
 const App = () => {
   const [country, setCountry] = useState([]);
@@ -94,13 +95,18 @@ const App = () => {
         <button type="button" onClick={addCountryButtonHandler}>
           국가추가
         </button>
-        <button type="submit" onClick={updateCountryButtonHandler}>
+        <button type="button" onClick={updateCountryButtonHandler}>
           업데이트
         </button>
       </form>
       <>
         <ul>
           {country.map((data) => {
+            // <Country
+            //   key={countryItem.id}
+            //   countryItem={countryItem}
+            //   deleteCountryButtonHandler={deleteCountryButtonHandler}
+            // />;
             return (
               <li key={data.id}>
                 <p>{data.name}</p>
