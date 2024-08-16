@@ -34,14 +34,18 @@ const App = () => {
       silver: silver,
       bronze: bronze,
     };
-
-    setCountry([...country, newCountryName]);
+    const medalSort = [...country, newCountryName].sort(
+      (a, b) => b.gold - a.gold
+    );
+    setCountry(medalSort);
+    setName("");
   };
 
   //삭제 함수 - 해당아이디만 고르는거 다시
   const deleteCountryButtonHandler = (id) => {
     const confirmAlert = confirm("국가를 삭제하시겠습니까?");
     if (confirmAlert === true) {
+      alert("해당국가를 삭제하였습니다.");
       const deleteCountry = country.filter((item) => {
         return item.id === id;
       });
@@ -62,7 +66,9 @@ const App = () => {
         return data;
       }
     });
-    setCountry(updateCountry);
+    const medalSort = updateCountry.sort((a, b) => b.gold - a.gold);
+    setCountry(medalSort);
+    setName("");
   };
 
   return (
