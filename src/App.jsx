@@ -40,11 +40,15 @@ const App = () => {
 
   //삭제 함수 - 해당아이디만 고르는거 다시
   const deleteCountryButtonHandler = (id) => {
-    //filter 사용해서 id값 비교!!
-    const deleteCountry = country.filter((item) => {
-      return item.id === id;
-    });
-    setCountry(deleteCountry);
+    const confirmAlert = confirm("국가를 삭제하시겠습니까?");
+    if (confirmAlert === true) {
+      const deleteCountry = country.filter((item) => {
+        return item.id === id;
+      });
+      setCountry(deleteCountry);
+    } else {
+      return false;
+    }
   };
 
   //국가 업데이트 함수
@@ -53,6 +57,9 @@ const App = () => {
     const updateCountry = country.map((data) => {
       if (data.name === name) {
         return { id: data.id, name, gold, silver, bronze };
+      } else {
+        alert("업데이트 할 국가가 없습니다.");
+        return data;
       }
     });
     setCountry(updateCountry);
